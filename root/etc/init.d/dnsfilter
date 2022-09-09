@@ -23,6 +23,14 @@ get_config(){
 	config_get time_update $1 time_update 6
 }
 
+convert_conf(){
+	local tconf=${1}
+	sed -i -e 's:/::g' -e 's:=::g' -e 's: ::g' $tconf
+	sed -i -e 's:^:address=/:' -e 's:$:/:' $tconf
+	sed -i '/=\/\//d' $tconf
+	echo "`sort -u $tconf`" > $tconf
+}
+
 add_dns(){
 	mkdir -p /tmp/dnsmasq.d $D
 	echo conf-dir=$D > /tmp/dnsmasq.d/dnsfilter.conf
@@ -66,8 +74,7 @@ EOF
 	fi
 	cat $L/black.list >> $D/black.conf
 	if [ -s $D/black.conf ];then
-		sed -i -e 's:^:address=/:' -e 's:$:/:' $D/black.conf
-		echo "`sort -u $D/black.conf`" > $D/black.conf
+		convert_conf $D/black.conf
 		for i in $(cat $D/black.conf);do
 			if grep -wq $i $D/rules.conf 2>/dev/null;then
 				sed -i -e "s#$i##" -e '/^$/d' $D/black.conf
