@@ -20,7 +20,7 @@ end
 
 function act_status()
 	local e = {}
-	e.running = luci.sys.call("[ -s /tmp/dnsmasq.dnsfilter/rules.conf ]") == 0
+	e.running = luci.sys.call("[ -s /tmp/dnsmasq.d/dnsfilter.conf ]") == 0
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e)
 end
