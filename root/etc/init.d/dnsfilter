@@ -433,6 +433,7 @@ stop(){
 
 restart(){
 	if [ $enable = 1 ];then
+		echo "`eval $E` [Restart DNSFilter...]" >> $Logfile
 		STATUS=N
 		stop
 		start
