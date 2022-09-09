@@ -8,6 +8,7 @@ E="date +'%Y-%m-%d %H:%M:%S'"
 L=/etc/dnsfilter
 P=/usr/share/dnsfilter
 T=/tmp/dnsfilter
+Logfile="/tmp/adupdate.log"
 STATUS=Y
 TAG="_DNSFILTER_RULE_"
 FWI=$(uci -q get firewall.dnsfilter.path)
@@ -357,7 +358,7 @@ add_cron(){
 	if [ $cron_mode = 1 ];then
 		if ! grep -wq "$time_update \* \* \* .*dnsfilter" $CRON_FILE;then
 			grep -q dnsfilter $CRON_FILE && sed -i '/dnsfilter/d' $CRON_FILE
-			echo "0 $time_update * * * $P/dnsfilter > /tmp/adupdate.log 2>&1" >> $CRON_FILE
+			echo "0 $time_update * * * $P/dnsfilter > $Logfile 2>&1" >> $CRON_FILE
 			/etc/init.d/cron restart
 		fi
 	else
@@ -426,7 +427,7 @@ stop(){
 		rm -rf $T
 		echo "`eval $E` [Revert Dnsmasq]"
 		/etc/init.d/dnsmasq restart >/dev/null 2>&1
-		rm -f /tmp/adupdate.log
+		rm -f $Logfile
 	fi
 }
 
