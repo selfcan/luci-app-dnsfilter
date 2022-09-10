@@ -4,6 +4,7 @@ STOP=10
 B=0
 CRON_FILE=/etc/crontabs/root
 D=/tmp/dnsmasq.dnsfilter
+Q=/tmp/dnsmasq.d
 E="date +'%Y-%m-%d %H:%M:%S'"
 L=/etc/dnsfilter
 P=/usr/share/dnsfilter
@@ -33,8 +34,8 @@ convert_conf(){
 }
 
 add_dns(){
-	mkdir -p /tmp/dnsmasq.d $D
-	echo conf-dir=$D > /tmp/dnsmasq.d/dnsfilter.conf
+	mkdir -p $Q $D
+	echo conf-dir=$D > $Q/dnsfilter.conf
 	if [ -n "$url" -a ! -s /tmp/dnsfilter/failed ];then
 		mkdir -p $T
 		if [ $flash = 1 ];then
@@ -416,7 +417,7 @@ stop(){
 	kill -9 $(ps -w | grep grep $P/addown | grep -v grep | awk '{print$1}') 2>/dev/null
 	kill -9 $(ps -w | grep ad_new.conf | grep -v grep | awk '{print$1}') 2>/dev/null
 	echo "`eval $E` [Stop DNSFilter]"
-	rm -rf /tmp/dnsmasq.d/dnsfilter.conf $D /var/lock/dnsfilter.lock
+	rm -rf $Q/dnsfilter.conf $D /var/lock/dnsfilter.lock
 	if [ "$(echo $url | sed 's/ /\n/g' | sort -u)" != "$(cat $T/url 2>/dev/null)" ];then
 		rm -rf $T
 		[ -d $L/rules ] && rm -rf $L/rules
