@@ -79,7 +79,6 @@ o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adb
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))
 o:value("https://block.energized.pro/extensions/porn-lite/formats/domains.txt", translate("Anti-Porn"))
-o.default = "https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf"
 
 local apply =luci.http.formvalue("cbi.apply")
 if apply then
