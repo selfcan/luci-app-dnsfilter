@@ -81,4 +81,11 @@ o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt",
 o:value("https://block.energized.pro/extensions/porn-lite/formats/domains.txt", translate("Anti-Porn"))
 o.default = "https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf"
 
+local apply =luci.http.formvalue("cbi.apply")
+if apply then
+    if SYS.init.index("dnsfilter") then
+        SYS.exec("sleep 2s")
+    end
+end
+
 return m
