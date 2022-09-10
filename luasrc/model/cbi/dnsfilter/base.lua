@@ -2,7 +2,7 @@ local SYS = require "luci.sys"
 
 m = Map("dnsfilter")
 m.title = translate("DNS Filter")
-m.description = translate("Support AdGuardHome/Host/DNSMASQ/Domain Rules")
+m.description = translate("Support AdGuardHome/Host/DNSMASQ/Domain Rules").." <a href=\"https://github.com/kongfl888/luci-app-dnsfilter/blob/main/README.cn\" target=\"_blank\" style=\"color:mediumturquoise\" >GITHUB</a>"
 m:section(SimpleSection).template = "dnsfilter/dnsfilter_status"
 
 s = m:section(TypedSection, "dnsfilter")
