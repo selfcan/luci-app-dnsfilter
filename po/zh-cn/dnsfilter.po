@@ -79,6 +79,9 @@ msgstr "清空闪存上的订阅规则库"
 msgid "Anti-AD Rules Subscribe"
 msgstr "广告过滤规则订阅 URL"
 
+msgid "anti-AD (Preferred)"
+msgstr "anti-AD （首选）"
+
 msgid "White Domain List"
 msgstr "域名白名单"
 
