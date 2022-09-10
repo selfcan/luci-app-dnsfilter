@@ -2,7 +2,9 @@
 
 This [K/luci-app-dnsfilter](https://github.com/kongfl888/luci-app-dnsfilter)
 
-Base on [small_5/luci-app-adblock-plus](https://github.com/small-5/luci-app-adblock-plus). Fork form [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter)
+Derived from [small_5/luci-app-adblock-plus](https://github.com/small-5/luci-app-adblock-plus). Fork from [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter)
+
+Contributors get from [github](https://github.com/kongfl888/luci-app-dnsfilter/graphs/contributors)
 
 基于项目的背景，如果你需要再次开发，请保留本README及以上文字。遵循开源的协议，项目内包括我的代码（每个字）请随意处置。请记住开源协议为GPLv2。也不要用于商业用途。
 
@@ -21,7 +23,7 @@ LICENSE: GPLv2
 
 属于路由器系统本身的功能。
 
-所以没必要把它当成你懂的来隐晦和屏蔽。如同Windows系统自带的hosts一样，没有针对谁。
+所以没必要把它当成你懂的来隐晦和屏蔽。如同Windows系统自带的hosts一样，是可以用于过滤某些欺诈类型的域名，这很重要。
 
 dnsmasq能用它就能用，出现突然不知道怎么回事请从系统日志和订阅规则上找问题。
 
