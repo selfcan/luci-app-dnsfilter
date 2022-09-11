@@ -30,6 +30,6 @@ echo "`eval $D` [Check Subscribe Rules Update]" >> $C
 /usr/share/dnsfilter/addown --down 1 >/dev/null 2>&1
 
 echo "`eval $D` [Reload Rules]" >> $C
-/etc/init.d/dnsmasq restart >/dev/null 2>&1
+rs_dnsmasq
 
 exit 0
