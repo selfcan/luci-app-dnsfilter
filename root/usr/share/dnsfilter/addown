@@ -6,7 +6,7 @@ LOCK=/var/lock/dnsfilter.lock
 touch $LOCK
 
 B=/tmp/dnsfilter
-C=/tmp/adupdate.log
+C=/tmp/adupdate_dnsfilter.log
 D="date +'%Y-%m-%d %H:%M:%S'"
 E="curl -kLfso"
 G="Download Subscribe Rules"

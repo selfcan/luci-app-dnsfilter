@@ -1,5 +1,5 @@
 local fs = require "nixio.fs"
-local conffile = "/tmp/adupdate.log"
+local conffile = "/tmp/adupdate_dnsfilter.log"
 
 f = SimpleForm("logview")
 f.reset = false

@@ -2,7 +2,7 @@
 # [K]2022
 # https://github.com/kongfl888
 
-Logfile="/tmp/adupdate.log"
+Logfile="/tmp/adupdate_dnsfilter.log"
 
 #sleep 6s
 

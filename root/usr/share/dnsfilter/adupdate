@@ -2,7 +2,7 @@
 # [K]2022
 # https://github.com/kongfl888
 
-C=/tmp/adupdate.log
+C=/tmp/adupdate_dnsfilter.log
 D="date +'%Y-%m-%d %H:%M:%S'"
 G="Check Subscribe Rules Update"
 
