@@ -68,7 +68,7 @@ o.write = function()
 end
 end
 
-if luci.sys.call("[ -h /tmp/dnsfilter/url ] || exit 9") == 9 then
+if luci.sys.call("[ -h /tmp/dnsfilter/url ] && exit 9") == 9 then
 	if nixio.fs.access("/etc/dnsfilter/rules") then
 		o = s:option(Button, "delete_1", translate("Delete Subscribe Rules On The Flash"))
 		o.inputstyle = "reset"
