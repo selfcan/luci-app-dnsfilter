@@ -4,9 +4,14 @@ XHR.poll(3,'<%=url([[admin]],[[services]],[[dnsfilter]],[[run]])%>',null,
 		var tb=document.getElementById('dnsfilter_status');
 		if (data&&tb){
 			if (data.running){
-				tb.innerHTML='<em><b><font color=green>DNS Filter <%:RUNNING%></font></b></em>';
+				tb.innerHTML='<em><b><span style="color:green">DNS Filter <%:CONFIGURED%></span></b></em>';
 			}else{
-				tb.innerHTML='<em><b><font color=red>DNS Filter <%:NOT RUNNING%></font></b></em>';
+				tb.innerHTML='<em><b><span style="color:red">DNS Filter <%:NOT CONFIGURED%></span></b></em>';
+			}
+			if (data.testdns){
+				tb.innerHTML+='<em><b> | <span style="color:green"><%:DNS Status%> <%:CHECK OK%></span></b></em>';
+			}else{
+				tb.innerHTML+='<em><b> | <span style="color:red"><%:DNS Status%> <%:ERROR DETECTED%></span></b></em>';
 			}
 		}
 	}

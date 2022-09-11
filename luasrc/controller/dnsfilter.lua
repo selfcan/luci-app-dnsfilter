@@ -21,6 +21,7 @@ end
 function act_status()
 	local e = {}
 	e.running = luci.sys.call("[ -s /tmp/dnsmasq.d/dnsfilter.conf ]") == 0
+	e.testdns = luci.sys.call("sh /usr/share/dnsfilter/testdns") == 0
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e)
 end

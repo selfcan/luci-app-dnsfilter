@@ -7,6 +7,7 @@
 				"/usr/share/dnsfilter/addown": [ "exec" ],
 				"/usr/share/dnsfilter/apply": [ "exec" ],
 				"/usr/share/dnsfilter/dnsfilter": [ "exec" ],
+				"/usr/share/dnsfilter/testdns": [ "exec" ],
 				"/tmp/dnsfilter/rules.conf": [ "read" ]
             },
 			"uci": [ "dnsfilter" ]

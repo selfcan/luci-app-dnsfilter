@@ -4,6 +4,9 @@ msgstr "基本设置"
 msgid "DNS Filter"
 msgstr "DNS 过滤器"
 
+msgid "DNS Status"
+msgstr "DNS 状态"
+
 msgid "Support filtering unscientific, fraudulent and custom domains. Support third-party rules. Lightweight."
 msgstr "轻量级，过滤不良、欺诈以及自定义域名，支持第三方规则自动识别。"
 
