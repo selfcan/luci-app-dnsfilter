@@ -40,7 +40,7 @@ function refresh_data()
 		icount=icount1
 	end
 	if tonumber(icount) > 0 then
-		luci.sys.exec("/etc/init.d/dnsfilter restart &")
+		luci.sys.exec("/etc/init.d/dnsmasq restart &")
 		retstring = tostring(math.ceil(tonumber(icount)))
 	else
 		retstring = "-1"
