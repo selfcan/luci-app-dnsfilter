@@ -2,8 +2,28 @@
 # [K]2022
 # https://github.com/kongfl888
 
+A=`uci -q get dnsfilter.@dnsfilter[0].app_test`
 C=/tmp/adupdate_dnsfilter.log
 D="date +'%Y-%m-%d %H:%M:%S'"
+E=/tmp/dnsmasq.dnsfilter
+P=/usr/share/dnsfilter
+T=/tmp/dnsfilter
+L=/etc/dnsfilter
+
+rs_dnsmasq(){
+	/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	[ "$A" = "1" ] || return 0
+	sh $P/testdns
+	local R=$?
+	if [ $R == 1 ];then
+		echo "`eval $D` [DNS Check ERROR]"
+		echo "`eval $D` [DNS Check ERROR. Please check your rules or your system.]" >> $C
+		rm -f $E/rules.conf
+		[ -f $L/rules/rules.conf ] && echo -n > $L/rules/rules.conf
+		[ -f $T/rules.conf ] && echo -n > $T/rules.conf
+		/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	fi
+}
 
 echo "`eval $D` [Check Subscribe Rules Update]" >> $C
 

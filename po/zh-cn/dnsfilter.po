@@ -43,6 +43,9 @@ msgstr "拦截 短视频 APP 和网站"
 msgid "Enable automatic update rules"
 msgstr "启用规则自动更新"
 
+msgid "Check After Update"
+msgstr "更新后自检"
+
 msgid "Update time (every day)"
 msgstr "更新时间 (每天)"
 

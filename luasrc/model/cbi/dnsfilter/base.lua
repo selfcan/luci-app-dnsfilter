@@ -28,6 +28,11 @@ o = s:option(Flag, "cron_mode", translate("Enable automatic update rules"))
 o.rmempty = false
 o.default = 1
 
+o = s:option(Flag, "app_test", translate("Check After Update"))
+o.rmempty = false
+o.default = 1
+o:depends("cron_mode",1)
+
 o = s:option(ListValue, "time_update", translate("Update time (every day)"))
 for s = 0,23 do
 o:value(s, s .. ':00')
