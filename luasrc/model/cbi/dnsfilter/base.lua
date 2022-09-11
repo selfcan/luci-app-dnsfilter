@@ -44,7 +44,7 @@ tmp_rule = 0
 if nixio.fs.access("/tmp/dnsfilter/rules.conf") then
 tmp_rule = 1
 UD = SYS.exec("cat /tmp/dnsfilter/dnsfilter.updated 2>/dev/null")
-rule_count = tonumber(SYS.exec("find /tmp/dnsfilter -exec cat {} \\; 2>/dev/null | wc -l"))
+rule_count = tonumber(SYS.exec("sed -r '/^$/d' /tmp/dnsmasq.dnsfilter/rules.conf 2>/dev/null | wc -l"))
 o = s:option(DummyValue, "1", translate("Subscribe Rules Data"))
 o.rawhtml = true
 o.template = "dnsfilter/dnsfilter_refresh"
