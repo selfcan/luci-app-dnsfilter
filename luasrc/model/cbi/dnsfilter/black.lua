@@ -15,8 +15,6 @@ function f.handle(self,state,data)
 	if state == FORM_VALID then
 		if data.conf then
 			fs.writefile(conffile,data.conf:gsub("\r\n","\n"))
-		else
-			luci.sys.call("> /etc/dnsfilter/black.list")
 		end
 		luci.sys.exec("[ \"$(uci -q get dnsfilter.@dnsfilter[0].enable)\" = 1 ] && /etc/init.d/dnsfilter restart")
 	end

@@ -15,12 +15,10 @@ function f.handle(self,state,data)
 	if state == FORM_VALID then
 		if data.conf then
 			fs.writefile(conffile,data.conf:gsub("\r\n","\n"))
-		else
-			luci.sys.call("> /etc/dnsfilter/white.list")
 		end
-		luci.sys.exec("for i in $(cat /etc/dnsfilter/white.list);do sed -i -e \"/\\/$i\\//d\" -e \"/\\.$i\\//d\" /tmp/dnsfilter/rules.conf 2>/dev/null;\\\
+		luci.sys.exec("for i in $(cat /etc/dnsfilter/white.list);do [ -s /tmp/dnsfilter/rules.conf ] && sed -i -e \"/\\/$i\\//d\" -e \"/\\.$i\\//d\" /tmp/dnsfilter/rules.conf 2>/dev/null;\\\
 		[ -s /etc/dnsfilter/rules/rules.conf ] && sed -i -e \"/\\/$i\\//d\" -e \"/\\.$i\\//d\" /etc/dnsfilter/rules/rules.conf;done;\\\
-		[ -s /tmp/dnsfilter/rules.conf ] && rm -f /tmp/dnsmasq.dnsfilter/rules.conf && /etc/init.d/dnsfilter start")
+		/etc/init.d/dnsmasq restart")
 	end
 	return true
 end
