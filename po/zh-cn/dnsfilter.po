@@ -4,14 +4,29 @@ msgstr "基本设置"
 msgid "DNS Filter"
 msgstr "DNS 过滤器"
 
-msgid "Support AdGuardHome/Host/DNSMASQ/Domain Rules"
-msgstr "支持 AdGuardHome/Host/DNSMASQ/Domain 规则"
+msgid "Support filtering unscientific, fraudulent and custom domains. Support third-party rules. Lightweight."
+msgstr "轻量级，过滤不良、欺诈以及自定义域名，支持第三方规则自动识别。"
 
 msgid "RUNNING"
 msgstr "运行中"
 
 msgid "NOT RUNNING"
 msgstr "未运行"
+
+msgid "CONFIGURED"
+msgstr "已配置"
+
+msgid "NOT CONFIGURED"
+msgstr "未配置"
+
+msgid "CHECK OK"
+msgstr "测试正常"
+
+msgid "NOT CHECKED"
+msgstr "未检查"
+
+msgid "ERROR DETECTED"
+msgstr "发现错误"
 
 msgid "Enable"
 msgstr "启用"
@@ -56,7 +71,7 @@ msgid "Last Update Checked"
 msgstr "上一次检查规则更新"
 
 msgid "Subscribe Rules Data"
-msgstr "去广告规则"
+msgstr "订阅规则"
 
 msgid "AdGuardHome / Host / DNSMASQ / Domain rules auto-convert"
 msgstr "AdGuardHome / Host / DNSMASQ / Domain 规则自动识别, 自动去重"
@@ -76,8 +91,8 @@ msgstr "清空规则文件，并且删除所有的订阅链接<br/>如果只是�
 msgid "Delete Subscribe Rules On The Flash"
 msgstr "清空闪存上的订阅规则库"
 
-msgid "Anti-AD Rules Subscribe"
-msgstr "广告过滤规则订阅 URL"
+msgid "Filter Rules Subscription URL"
+msgstr "过滤规则订阅 URL"
 
 msgid "anti-AD (Preferred)"
 msgstr "anti-AD （首选）"
@@ -108,3 +123,6 @@ msgstr "强制为 Google Bing Duckduckgo Yandex Youtube 开启安全搜索,过�
 
 msgid "Update Log"
 msgstr "更新日志"
+
+msgid "Log"
+msgstr "日志"

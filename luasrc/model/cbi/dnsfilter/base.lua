@@ -2,7 +2,7 @@ local SYS = require "luci.sys"
 
 m = Map("dnsfilter")
 m.title = translate("DNS Filter")
-m.description = translate("Support AdGuardHome/Host/DNSMASQ/Domain Rules").." <a href=\"https://github.com/kongfl888/luci-app-dnsfilter/blob/main/README.cn\" target=\"_blank\" style=\"color:mediumturquoise\" >GITHUB</a>"
+m.description = translate("Support filtering unscientific, fraudulent and custom domains. Support third-party rules. Lightweight.").." <a href=\"https://github.com/kongfl888/luci-app-dnsfilter/blob/main/README.cn\" target=\"_blank\" style=\"color:mediumturquoise\" >GITHUB</a>"
 m:section(SimpleSection).template = "dnsfilter/dnsfilter_status"
 
 s = m:section(TypedSection, "dnsfilter")
@@ -74,7 +74,7 @@ if luci.sys.call("[ -h /tmp/dnsfilter/url ] || exit 9") == 9 then
 	end
 end
 
-o = s:option(DynamicList, "url", translate("Anti-AD Rules Subscribe"))
+o = s:option(DynamicList, "url", translate("Filter rules subscription URL"))
 o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf", translate("anti-AD (Preferred)"))
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))

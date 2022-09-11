@@ -13,7 +13,7 @@ function index()
 	entry({"admin", "services", "dnsfilter", "white"}, form("dnsfilter/white"), _("White Domain List"), 20).leaf = true
 	entry({"admin", "services", "dnsfilter", "black"}, form("dnsfilter/black"), _("Block Domain List"), 30).leaf = true
 	entry({"admin", "services", "dnsfilter", "ip"}, form("dnsfilter/ip"), _("Block IP List"), 40).leaf = true
-	entry({"admin", "services", "dnsfilter", "log"}, form("dnsfilter/log"), _("Update Log"), 50).leaf = true
+	entry({"admin", "services", "dnsfilter", "log"}, form("dnsfilter/log"), _("Log"), 50).leaf = true
 	entry({"admin", "services", "dnsfilter", "run"}, call("act_status")).leaf = true
 	entry({"admin", "services", "dnsfilter", "refresh"}, call("refresh_data"))
 end
