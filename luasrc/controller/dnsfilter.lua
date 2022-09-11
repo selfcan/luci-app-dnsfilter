@@ -34,7 +34,7 @@ function refresh_data()
 	luci.sys.exec("/usr/share/dnsfilter/addown --down 1")
 	icount1 = luci.sys.exec("find /tmp/dnsfilter -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
 	icount2 = luci.sys.exec("find /etc/dnsfilter/rules/ -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
-	if tonumber(icount1) = 0 then
+	if tonumber(icount1) == 0 then
 		icount=icount2
 	else
 		icount=icount1
