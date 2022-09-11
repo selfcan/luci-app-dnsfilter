@@ -58,6 +58,7 @@ down(){
 		echo "`eval $E` [$B Successful]"
 		rm -f $F $G/host $P/failed
 		for i in $W;do sed -i -e "/\/$i\//d" -e "/\.$i\//d" $G/rules.conf;done
+		sh /usr/share/dnsfilter/checkconf $G/rules.conf
 		[ "$1" = 2 ] && rm -f $LOCK && exit
 		X=`uci -q get dnsfilter.@dnsfilter[0].flash`
 		Y=`md5sum $G/* | awk '{print$1}'`
