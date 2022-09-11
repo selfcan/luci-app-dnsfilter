@@ -16,6 +16,5 @@ if [ "$2" = 1 ];then
 	/usr/share/dnsfilter/dnsfilter addown >> $C
 fi
 
-echo "`eval $D` [Start DNSFilter]" >> $C;echo `eval $D` > $B/dnsfilter.updated
+echo `eval $D` > $B/dnsfilter.updated
 rm -f $LOCK
-/etc/init.d/dnsfilter start &

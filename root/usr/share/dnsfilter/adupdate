@@ -1,0 +1,15 @@
+#!/bin/sh
+# [K]2022
+# https://github.com/kongfl888
+
+C=/tmp/adupdate.log
+D="date +'%Y-%m-%d %H:%M:%S'"
+G="Check Subscribe Rules Update"
+
+echo "`eval $D` [$G]" >> $C
+
+/usr/share/dnsfilter/addown --down 1 >/dev/null 2>&1
+
+/etc/init.d/dnsmasq restart >/dev/null 2>&1
+
+exit 0

@@ -360,7 +360,7 @@ add_cron(){
 	if [ $cron_mode = 1 ];then
 		if ! grep -wq "$time_update \* \* \* .*dnsfilter" $CRON_FILE;then
 			grep -q dnsfilter $CRON_FILE && sed -i '/dnsfilter/d' $CRON_FILE
-			echo "0 $time_update * * * $P/dnsfilter > $Logfile 2>&1" >> $CRON_FILE
+			echo "0 $time_update * * * $P/adupdate 2>&1" >> $CRON_FILE
 			/etc/init.d/cron restart
 		fi
 	else
@@ -389,21 +389,22 @@ start(){
 		echo "`eval $E` [DNSFilter is disabled]"
 		exit 1
 	fi
-	if [ -s $D/rules.conf ];then
+	if [ -s $Q/dnsfilter.conf ];then
 		echo "`eval $E` [DNSFilter is running]"
 		exit 1
 	fi
+	echo "`eval $E` [Start DNSFilter]"
 	if [ -n "$url" ];then
 		[ $flash = 0 -a ! -s $T/rules.conf ] && B=1
 		[ $flash = 1 -a ! -s $L/rules/rules.conf ] && B=1
 	fi
 	if [ $B = 1 ];then
 		echo "`eval $E` [Download Subscribe Rules...]"
-		$P/addown --down $B >/dev/null 2>&1 &
-		exit 9
+		$P/addown --down $B >/dev/null 2>&1
 	fi
 	echo "`eval $E` [Load DNSFilter Rules]"
 	add_dns
+	del_rule
 	add_rule
 	add_cron
 	if [ $STATUS = Y ];then

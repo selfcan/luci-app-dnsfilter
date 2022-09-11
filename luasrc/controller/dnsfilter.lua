@@ -26,25 +26,25 @@ function act_status()
 end
 
 function refresh_data()
-local set = luci.http.formvalue("set")
-local icount = 0
+	local set = luci.http.formvalue("set")
+	local icount = 0
+	local icount1 = 0
+	local icount2 = 0
 
-	luci.sys.exec("/usr/share/dnsfilter/dnsfilter down")
-	icount = luci.sys.exec("find /tmp/ad_tmp -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
-	if tonumber(icount)>0 then
-		oldcount = luci.sys.exec("find /tmp/dnsfilter -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
-		if tonumber(icount) ~= tonumber(oldcount) then
-			luci.sys.exec("[ -h /tmp/dnsfilter/url ] && (rm -f /etc/dnsfilter/rules/*;cp -a /tmp/ad_tmp/* /etc/dnsfilter/rules) || (rm -f /tmp/dnsfilter/*;cp -a /tmp/ad_tmp/* /tmp/dnsfilter)")
-			luci.sys.exec("/etc/init.d/dnsfilter restart &")
-			retstring = tostring(math.ceil(tonumber(icount)))
-		else
-			retstring = 0
-		end
-		luci.sys.call("echo `date +'%Y-%m-%d %H:%M:%S'` > /tmp/dnsfilter/dnsfilter.updated")
+	luci.sys.exec("/usr/share/dnsfilter/addown --down 1")
+	icount1 = luci.sys.exec("find /tmp/dnsfilter -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
+	icount2 = luci.sys.exec("find /etc/dnsfilter/rules/ -type f -name rules.conf -exec cat {} \\; 2>/dev/null | wc -l")
+	if tonumber(icount1) = 0 then
+		icount=icount2
+	else
+		icount=icount1
+	end
+	if tonumber(icount) > 0 then
+		luci.sys.exec("/etc/init.d/dnsfilter restart &")
+		retstring = tostring(math.ceil(tonumber(icount)))
 	else
 		retstring = "-1"
 	end
-	luci.sys.exec("rm -rf /tmp/ad_tmp")
 
 	luci.http.prepare_content("application/json")
 	luci.http.write_json({ret=retstring,retcount=icount})
