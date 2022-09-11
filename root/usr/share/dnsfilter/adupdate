@@ -18,7 +18,6 @@ rs_dnsmasq(){
 	if [ $R == 1 ];then
 		echo "`eval $D` [DNS Check ERROR]"
 		echo "`eval $D` [DNS Check ERROR. Please check your rules or your system.]" >> $C
-		rm -f $E/rules.conf
 		[ -f $L/rules/rules.conf ] && echo -n > $L/rules/rules.conf
 		[ -f $T/rules.conf ] && echo -n > $T/rules.conf
 		/etc/init.d/dnsmasq restart >/dev/null 2>&1
