@@ -97,8 +97,8 @@ msgstr "拦截黑名单内的域名"
 msgid "Block IP List"
 msgstr "IP 黑名单"
 
-msgid "Will Always block these IP"
-msgstr "拦截黑名单内的 IP 地址"
+msgid "Will Always block IP/IPs of here"
+msgstr "拦截黑名单内的 IP 地址/网段"
 
 msgid "Safe Search"
 msgstr "安全搜索"
