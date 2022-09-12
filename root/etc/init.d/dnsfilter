@@ -439,7 +439,7 @@ stop(){
 		rm -rf $T
 		[ -d $L/rules ] && rm -rf $L/rules
 	fi
-	([ -h $T/url -a $flash = 0 ] || [ -z "$url" ]) && rm -rf $T
+	([ -h $T/url -a $flash = 0 ] || [ -z "$url" ]) && { rm -rf $T; rm -rf $L/rules; }
 	[ $enable = 0 ] && del_cron
 	if [ $STATUS = Y ];then
 		rm -rf $T
