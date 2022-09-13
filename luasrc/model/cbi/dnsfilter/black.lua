@@ -5,7 +5,7 @@ f = SimpleForm("custom")
 t = f:field(TextValue, "conf")
 t.rmempty = true
 t.rows = 13
-t.description = translate("Will Always block these Domain")
+t.description = translate("Will Always block these Domain. abc.xyz same as *.abc.xyz")
 
 function t.cfgvalue()
 	return fs.readfile(conffile) or ""

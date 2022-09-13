@@ -109,20 +109,20 @@ msgstr "anti-AD （隐私保护|首选）"
 msgid "White Domain List"
 msgstr "域名白名单"
 
-msgid "Will Never filter these Domain"
-msgstr "永不过滤白名单内的域名"
+msgid "Do NOT filter these Domain. abc.xyz same as *.abc.xyz"
+msgstr "不过滤白名单内的域名。abc.xyz 同 *.abc.xyz"
 
 msgid "Block Domain List"
 msgstr "域名黑名单"
 
-msgid "Will Always block these Domain"
-msgstr "拦截黑名单内的域名"
+msgid "Will Always block these Domain. abc.xyz same as *.abc.xyz"
+msgstr "拦截黑名单内的域名。abc.xyz 同 *.abc.xyz"
 
 msgid "Block IP List"
 msgstr "IP 黑名单"
 
-msgid "Will Always block IP/IPs of here"
-msgstr "拦截黑名单内的 IP 地址/网段"
+msgid "Will Always block IP/IPs of here. Can use 10.1.1.0/24"
+msgstr "拦截黑名单内的 IP 地址，支持网段如 10.1.1.0/24"
 
 msgid "Safe Search"
 msgstr "安全搜索"
