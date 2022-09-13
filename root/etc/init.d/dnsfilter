@@ -18,6 +18,7 @@ flash=$(uci -q get dnsfilter.@dnsfilter[0].flash)
 url=$(uci -q get dnsfilter.@dnsfilter[0].url)
 apptest=`uci -q get dnsfilter.@dnsfilter[0].app_test`
 GH=`uci -q get dnsfilter.@dnsfilter[0].easy_github`
+dcache=`uci -q get dnsfilter.@dnsfilter[0].dns_cache`
 
 get_config(){
 	config_get_bool cron_mode $1 cron_mode 1
@@ -418,6 +419,10 @@ start(){
 		sh /usr/share/dnsfilter/ghosts
 	else
 		rm -f $D/easy_github.conf
+	fi
+	if [ -n $dcache ]; then
+		uci set dhcp.@dnsmasq[0].cachesize=$dcache
+		uci commit dhcp
 	fi
 	if [ -n "$url" ];then
 		[ $flash = 0 -a ! -s $T/rules.conf ] && B=1

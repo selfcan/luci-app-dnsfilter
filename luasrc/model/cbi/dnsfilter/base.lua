@@ -1,4 +1,5 @@
 local SYS = require "luci.sys"
+local UCI = require"luci.model.uci".cursor()
 
 m = Map("dnsfilter")
 m.title = translate("DNS Filter")
@@ -79,6 +80,14 @@ o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adb
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))
 o:value("https://block.energized.pro/extensions/porn-lite/formats/domains.txt", translate("Anti-Porn"))
+
+
+local dnsn=UCI:get("dhcp","@dnsmasq[0]","cachesize") or "150"
+
+o = s:option(Value, "dns_cache", translate("DNS Cache"))
+o.description = translate("DNS Cache Now:").."<b><span style=\"color:green\"> "..dnsn.."</span></b><br />"..translate("Set DNS cache, 150 by default (range 0-10000, 0 not cached).")
+o.datatype = "range(0,10000)"
+o.default = 600
 
 local apply =luci.http.formvalue("cbi.apply")
 if apply then

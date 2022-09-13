@@ -106,17 +106,26 @@ msgstr "过滤规则订阅 URL"
 msgid "anti-AD (Privacy-Protect|Preferred)"
 msgstr "anti-AD （隐私保护|首选）"
 
+msgid "DNS Cache"
+msgstr "DNS 缓存"
+
+msgid "DNS Cache Now:"
+msgstr "当前DNS缓存："
+
+msgid "Set DNS cache, 150 by default (range 0-10000, 0 not cached)."
+msgstr "设置DNS缓存，默认150（范围0-10000，0 表示不缓存），规则多的建议设置大些。"
+
 msgid "White Domain List"
 msgstr "域名白名单"
 
 msgid "Do NOT filter these Domain. abc.xyz same as *.abc.xyz"
-msgstr "不过滤白名单内的域名。abc.xyz 同 *.abc.xyz"
+msgstr "不过滤白名单内的域名。一行一个。abc.xyz 同 *.abc.xyz"
 
 msgid "Block Domain List"
 msgstr "域名黑名单"
 
 msgid "Will Always block these Domain. abc.xyz same as *.abc.xyz"
-msgstr "拦截黑名单内的域名。abc.xyz 同 *.abc.xyz"
+msgstr "拦截黑名单内的域名。一行一个。abc.xyz 同 *.abc.xyz"
 
 msgid "Block IP List"
 msgstr "IP 黑名单"
