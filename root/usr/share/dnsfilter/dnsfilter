@@ -55,7 +55,7 @@ down(){
 	[ -s $G/rules.conf ] && sed -i -e 's:/127.0.0.1$:/:' -e 's:/0.0.0.0$:/:' $G/rules.conf && echo "`sort -u $G/rules.conf`" > $G/rules.conf
 	[ -s $G/url ] && echo "`sort -u $G/url`" > $G/url
 	if [ -s $G/rules.conf ];then
-		echo "`eval $E` [$B Successful]"
+		echo "`eval $E` [$B Successfully]"
 		rm -f $F $G/host $P/failed
 		for i in $W;do sed -i -e "/\/$i\//d" -e "/\.$i\//d" $G/rules.conf;done
 		sh /usr/share/dnsfilter/checkconf $G/rules.conf
