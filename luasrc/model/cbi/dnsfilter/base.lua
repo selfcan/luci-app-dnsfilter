@@ -37,7 +37,7 @@ o = s:option(ListValue, "time_update", translate("Update time (every day)"))
 for s = 0,23 do
 o:value(s, s .. ':00')
 end
-o.default = 6
+o.default = 7
 o:depends("cron_mode",1)
 
 tmp_rule = 0
