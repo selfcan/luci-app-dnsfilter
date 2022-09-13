@@ -2,11 +2,21 @@
 # [K]2022
 # https://github.com/kongfl888
 
+LOCK=/var/lock/dnsfilterg.lock
+[ -f $LOCK ] && exit 1
+touch $LOCK
+
 GH=`uci -q get dnsfilter.@dnsfilter[0].easy_github`
 EA=`uci -q get dnsfilter.@dnsfilter[0].enable`
 D="date +'%Y-%m-%d %H:%M:%S'"
 
-[ "$EA" = "0" ] && exit 0
+#EA=1
+#GH=1
+
+if [ "$EA" = "0" ]; then
+	rm -f $LOCK
+	exit 0
+fi
 
 gi=0
 gl="http"
@@ -14,10 +24,14 @@ GL1=/tmp/e-g-1.txt
 GL2=/tmp/e-g-2.txt
 EG=/etc/dnsfilter/easy_github
 rm -f ${GL1} ${GL2}
-[ "$GH" = "1" ] || exit 9
+if [ "$GH" != "1" ]; then
+	rm -f $LOCK
+	exit 9
+fi
 curl --connect-timeout 6 --retry 2 -m 80 -kLfso $GL1 https://raw.githubusercontents.com/kongfl888/ad-rules/master/easy_github
 if [ ! -f ${GL1} ]; then
 	echo "`eval $D` [Failed to Update EASY GITHUB Rule]"
+	rm -f $LOCK
 	exit 1
 fi
 gi=`sed -n '1p' $GL1`
@@ -25,6 +39,7 @@ gl=`sed -n '2p' $GL1`
 [ "$gi" = "2" ] && curl --connect-timeout 6 --retry 2 -m 80 -kLfso $GL1 $gl
 if [ ! -f ${GL1} ]; then
 	echo "`eval $D` [Failed to Update EASY GITHUB Rule]"
+	rm -f $LOCK
 	exit 1
 fi
 gl=`grep "http" $GL1 | tail -n3`
@@ -41,4 +56,5 @@ fi
 awk '/^[0-9]/ {printf "address=/%s/%s\n",$2,$1};/^#/;/^$/' $GL2 | grep "address=" > $EG
 sh /usr/share/dnsfilter/checkconf $EG
 rm -f ${GL1} ${GL2}
+rm -f $LOCK
 exit 0
