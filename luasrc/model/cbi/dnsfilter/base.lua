@@ -71,7 +71,7 @@ if tmp_rule == 1 then
 end
 
 o = s:option(DynamicList, "url", translate("Filter Rules Subscription URL"))
-o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf", translate("anti-AD (Preferred)"))
+o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf", translate("anti-AD (Privacy-Protect|Preferred)"))
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))
 o:value("https://block.energized.pro/extensions/porn-lite/formats/domains.txt", translate("Anti-Porn"))
