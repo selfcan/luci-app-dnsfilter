@@ -19,6 +19,10 @@ o = s:option(Flag, "block_cnshort", translate("Block CNshort APP and Website"))
 o.rmempty = false
 o.default = 0
 
+o = s:option(Flag, "easy_github", translate("Easy to Visit GitHub Website"))
+o.rmempty = false
+o.default = 0
+
 o = s:option(Flag, "safe_search", translate("Safe Search"))
 o.description = translate("Enforcing SafeSearch for Google Bing Duckduckgo Yandex and Youtube.")
 o.rmempty = false

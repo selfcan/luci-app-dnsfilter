@@ -17,6 +17,7 @@ enable=$(uci -q get dnsfilter.@dnsfilter[0].enable)
 flash=$(uci -q get dnsfilter.@dnsfilter[0].flash)
 url=$(uci -q get dnsfilter.@dnsfilter[0].url)
 apptest=`uci -q get dnsfilter.@dnsfilter[0].app_test`
+GH=`uci -q get dnsfilter.@dnsfilter[0].easy_github`
 
 get_config(){
 	config_get_bool cron_mode $1 cron_mode 1
@@ -44,6 +45,9 @@ add_dns(){
 			[ -f $L/rules/url ] && ln -sf $L/rules/url $T/url
 		fi
 		[ -f $T/rules.conf ] && ln -sf $T/rules.conf $D/rules.conf
+	fi
+	if [ $GH = 1 -a -s $L/easy_github ];then
+		ln -sf $L/easy_github $D/easy_github.conf
 	fi
 	rm -f $D/black.conf
 	[ $block_ios = 1 ] && echo 'mesu.apple.com' > $D/black.conf
@@ -331,6 +335,7 @@ address=/youtube.googleapis.com/216.239.38.119
 address=/www.youtube-nocookie.com/216.239.38.119
 EOF
 	fi
+
 }
 
 gen(){
@@ -409,6 +414,11 @@ start(){
 		exit 1
 	fi
 	echo "`eval $E` [Start DNSFilter]"
+	if [ $GH = 1 ]; then
+		sh /usr/share/dnsfilter/ghosts
+	else
+		rm -f $D/easy_github.conf
+	fi
 	if [ -n "$url" ];then
 		[ $flash = 0 -a ! -s $T/rules.conf ] && B=1
 		[ $flash = 1 -a ! -s $L/rules/rules.conf ] && B=1

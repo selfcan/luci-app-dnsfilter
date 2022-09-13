@@ -28,6 +28,8 @@ echo "`eval $D` [Check Subscribe Rules Update]" >> $C
 
 /usr/share/dnsfilter/addown --down 1 >/dev/null 2>&1
 
+sh /usr/share/dnsfilter/ghosts >> $C
+
 echo "`eval $D` [Reload Rules]" >> $C
 rs_dnsmasq
 
