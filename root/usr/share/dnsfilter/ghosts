@@ -23,12 +23,23 @@ gl="http"
 GL1=/tmp/e-g-1.txt
 GL2=/tmp/e-g-2.txt
 EG=/etc/dnsfilter/easy_github
+RAW="ping -c 2 raw.githubusercontents.com"
+
 rm -f ${GL1} ${GL2}
 if [ "$GH" != "1" ]; then
 	rm -f $LOCK
 	exit 9
 fi
-curl --connect-timeout 6 --retry 2 -m 80 -kLfso $GL1 https://raw.githubusercontents.com/kongfl888/ad-rules/master/easy_github
+
+if [ `ping -c 2 raw.githubusercontents.com | grep "64" -c` -gt 0 ]; then
+	RAW="raw.githubusercontents.com"
+elif [ `ping -c 2 ghproxy.com | grep "64" -c` -gt 0 ]; then
+	RAW="ghproxy.com\/https:\/\/raw.githubusercontent.com"
+else
+	RAW="raw.githubusercontent.com"
+fi
+
+curl --connect-timeout 6 --retry 2 -m 80 -kLfso $GL1 "https:\/\/$RAW\/kongfl888\/ad-rules\/master\/easy_github"
 if [ ! -f ${GL1} ]; then
 	echo "`eval $D` [Failed to Update EASY GITHUB Rule]"
 	rm -f $LOCK
