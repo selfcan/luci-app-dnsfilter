@@ -92,7 +92,7 @@ o.default = 600
 local apply =luci.http.formvalue("cbi.apply")
 if apply then
     if SYS.init.index("dnsfilter") then
-        SYS.exec("sleep 2s")
+        SYS.exec("/usr/share/dnsfilter/apply &")
     end
 end
 
