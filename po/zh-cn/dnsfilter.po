@@ -104,7 +104,7 @@ msgid "Filter Rules Subscription URL"
 msgstr "过滤规则订阅 URL"
 
 msgid "anti-AD (Privacy-Protect|Preferred)"
-msgstr "anti-AD （隐私保护|首选）"
+msgstr "anti-AD （隐私保护|次选）"
 
 msgid "DNS Cache"
 msgstr "DNS 缓存"
