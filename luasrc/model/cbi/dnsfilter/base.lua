@@ -79,7 +79,7 @@ o = s:option(DynamicList, "url", translate("Filter Rules Subscription URL"))
 o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adblock-for-dnsmasq.conf", translate("anti-AD (Privacy-Protect|Preferred)"))
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))
-o:value("https://block.energized.pro/extensions/porn-lite/formats/domains.txt", translate("Anti-Porn"))
+o:value("https://anti-ad.net/easylist.txt", translate("anti-AD"))
 
 
 local dnsn=UCI:get("dhcp","@dnsmasq[0]","cachesize") or "150"
