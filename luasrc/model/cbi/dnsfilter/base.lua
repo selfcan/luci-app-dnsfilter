@@ -80,6 +80,7 @@ o:value("https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/adb
 o:value("https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", translate("AdGuard"))
 o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylistchina+Easylist"))
 o:value("https://anti-ad.net/easylist.txt", translate("anti-AD"))
+o:value("https://cats-team.coding.net/p/adguard/d/AdRules/git/raw/main/adguard.txt", translate("cats-team"))
 
 
 local dnsn=UCI:get("dhcp","@dnsmasq[0]","cachesize") or "150"
